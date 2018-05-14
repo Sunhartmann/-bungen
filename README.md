@@ -1,4 +1,4 @@
-# -bungen
+# Übungen
 DNAString = 'TAAGATTCTAAGATTCCGGGCTCGCCCG'
 pattern_len = 4
 DNA_variable = {}
