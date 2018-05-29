@@ -1,0 +1,16 @@
+#Implement Pattern to Number
+symb_to_numb = {'A':0, 'C':1, 'G':2, 'T':3}
+
+text = "AATTCTGGCTGAGGGCTATAG"
+def pattern_to_number(text):
+
+
+    if not text:
+        return 0
+
+    return 4 * pattern_to_number(text[:-1]) + symb_to_numb[text[-1]]
+
+if __name__ == "__main__":
+
+    print('input:', text)
+    print('output:', pattern_to_number(text))
