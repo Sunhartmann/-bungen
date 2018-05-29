@@ -1,0 +1,56 @@
+#faster frequent words
+fasterfrequentwords(text,k)
+frepuent_patterns[]
+FREQUENCYARRAY = computing_frequencies(text,k)
+maxCount = max(FREQUENCYARRAY)
+for in range (4**k-1,0):
+    if FREQUENCYARRAY(i) == maxCount:
+        pattern = numbertopattern [i:k]
+        frequentPatterns.append(pattern)
+return frequentPatterns
+#computing frequencies:
+text=input("String?")
+k= int(input("k?"))
+
+symb_to_numb = {'A':0, 'C':1, 'G':2, 'T':3}
+
+
+def pattern_to_number(text):
+    if not text:
+        return 0
+
+    return 4 * pattern_to_number(text[:-1]) + symb_to_numb[text[-1]]
+
+def computing_frequencies(text, k):
+    frequencyarray = [0] * (4**k)
+    for i in range(0,(len(text)-k+1)):
+        pattern = text[i:i+k]
+        j = pattern_to_number(pattern)
+        frequencyarray[j] = frequencyarray[j]+1
+
+
+    return frequencyarray
+#frequent patterns:
+def PatternCount(text, pattern):
+    count = 0
+    for i in range(0, (len(text) - len(pattern)) + 1):
+        if text[i: i + len(pattern)] == pattern:
+            count = count + 1
+    return count
+
+frequentPatterns = []
+COUNT = [0] * len(text)
+for i in range(0, (len(text) - k+1)):
+    pattern = text[i: i + k]
+    COUNT[i] = PatternCount(text, pattern)
+maxCount = max(COUNT)
+for i in range(0, (len(text) - k+1 )):
+    if COUNT[i] == maxCount:
+        if text[i: i + k] not in frequentPatterns:
+            frequentPatterns.append(text[i: i + k])
+
+
+
+
+print ('input:', 'text =', text,',', 'k=', k)
+print ('output:', computing_frequencies(text,k)
