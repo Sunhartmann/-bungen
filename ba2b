@@ -1,0 +1,49 @@
+k = 3
+DNA = ('AAATTGACGCAT, GACGACCACGTT, CGTCAGCGCCTG, GCTGAGCACCGG, AGTACGGGACAG')
+
+distance = 0
+def HammingDistance(s1, s2):
+	ham_d = 0
+	for x, y in zip(s1, s2):
+		if x != y:
+			ham_d += 1
+	return ham_d
+
+def NumberToPattern(n, k):
+	if k == 1:
+		return NumberToSymbol(n)
+	return NumberToPattern(n // 4, k-1) + NumberToSymbol(n % 4)
+
+def NumberToSymbol(n):
+	if n == 0:
+		return "A"
+	if n == 1:
+		return "C"
+	if n == 2:
+		return "G"
+	if n == 3:
+		return "T"
+
+def DistanceBetweenPatternAndString(pattern, DNA):
+	k = len(pattern)
+	distance = 0
+	for x in DNA:
+		hamming_d = k+1
+		for i in range(len(x) - k + 1)
+			if hamming_d > HammingDistance(pattern, x[i:i+k]):
+				hamming_d = HammingDistance(pattern, x[i:i+k])
+		distance += hamming_d
+	return distance
+
+def MedianString(DNA, k):
+	distance = (k+1) * len(DNA)
+	Median = ""
+	for i in range(4**k):
+		pattern = NumberToPattern(i, k)
+		if distance > DistanceBetweenPatternAndString(pattern, DNA):
+			distance = DistanceBetweenPatternAndString(pattern, DNA)
+			Median = pattern
+	return Median
+
+print(MedianString(DNA, k))
+
